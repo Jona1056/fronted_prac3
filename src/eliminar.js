@@ -1,7 +1,7 @@
 import  { useState } from 'react';
-
+import Swal from 'sweetalert2';
 import "./formulario.css";
-const Formulario = () => {
+const Eliminar = () => {
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
 
@@ -10,7 +10,7 @@ const Formulario = () => {
 
     try {
       // Realizar una solicitud POST a tu API Flask con los datos del formulario
-      const response = await fetch('https://express-backend-sopes.azurewebsites.net/Login', {
+      const response = await fetch('http://192.168.49.2:30197//eliminar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,12 +19,22 @@ const Formulario = () => {
       });
       const datos = await response.json();
       console.log(datos)
-      if (datos[0].credcorrectas === 0) {
+      if (datos.message === "success") {
         // Si la solicitud fue exitosa, redirigir al usuario a la página de inicio
-        alert('LOGEO INCORRECTO')
+       
+        Swal.fire({
+          title: 'Exito!',
+          text: 'Usuario eliminado correctamente',
+          icon: 'success',
+        });
+        ;
         } else {
         // Si la solicitud no fue exitosa, mostrar un mensaje de error
-        alert('LOGEO CORRECTO')
+        Swal.fire({
+          title: 'Error!',
+          text: 'No se pudo eliminar el usuario(No existe)',
+          icon: 'error',
+        });
         }
 
     } catch (error) {
@@ -44,18 +54,11 @@ const Formulario = () => {
         />
       </label>
       <br />
-      <label>
-        Contraseña:
-        <input
-          type="password"
-          value={contrasena}
-          onChange={(e) => setContrasena(e.target.value)}
-        />
-      </label>
+     
       <br />
-      <button type="submit">Enviar</button>
+      <button type="submit">Eliminar</button>
     </form>
   );
 };
 
-export default Formulario;
+export default Eliminar;

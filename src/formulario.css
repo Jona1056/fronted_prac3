@@ -1,10 +1,4 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
+
   
   form {
     width: 500px; /* Ajusta el ancho según tus necesidades */
@@ -12,6 +6,13 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+
+    /* Centrar verticalmente */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
   label {
@@ -26,15 +27,26 @@ body {
   }
   
   button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #89cf9d;
+    color: #000000;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #dfe8ee;
+    box-shadow: 0 0 20px #a6a6a650;
+    transform: scale(1.1);
   }
   
+  button:active {
+    background-color: #6cd558;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+  }

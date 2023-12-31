@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import Swal from 'sweetalert2';
 import "./formulario.css";
-const Formulario = () => {
+const Crear = () => {
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
 
@@ -10,7 +10,7 @@ const Formulario = () => {
 
     try {
       // Realizar una solicitud POST a tu API Flask con los datos del formulario
-      const response = await fetch('http://192.168.49.2:30197/', {
+      const response = await fetch('http://192.168.49.2:30197//crear', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const Formulario = () => {
        
         Swal.fire({
           title: 'Exito!',
-          text: 'Te has logeado correctamente',
+          text: 'Usuario creado correctamente',
           icon: 'success',
         });
         ;
@@ -32,7 +32,7 @@ const Formulario = () => {
         // Si la solicitud no fue exitosa, mostrar un mensaje de error
         Swal.fire({
           title: 'Error!',
-          text: 'Usuario o Contraseña incorrecta',
+          text: 'No se pudo crear el usuario',
           icon: 'error',
         });
         }
@@ -63,9 +63,9 @@ const Formulario = () => {
         />
       </label>
       <br />
-      <button type="submit">Enviar</button>
+      <button type="submit">Crear</button>
     </form>
   );
 };
 
-export default Formulario;
+export default Crear;
